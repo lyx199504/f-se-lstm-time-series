@@ -39,12 +39,11 @@ if __name__ == "__main__":
                 train_point, val_point = int(len(X) * 0.6), int(len(X) * 0.8)
 
                 # 子序列频率
-                X_c_list = []
+                X_f_list = []
                 for i in range(seq_len - sub_seq_len + 1):
-                    X_c = nf.rfft(X[:, i: i + sub_seq_len])
-                    X_map = np.abs(X_c)
-                    X_c_list.append(X_map[:, np.newaxis])
-                X = np.concatenate(X_c_list, axis=1)
+                    X_f = np.abs(nf.rfft(X[:, i: i + sub_seq_len]))
+                    X_f_list.append(X_f)
+                X = np.stack(X_f_list, axis=1)
 
                 model = model_clf(learning_rate=0.001, batch_size=512, epochs=500, random_state=1, seq_len=seq_len, sub_seq_len=sub_seq_len)
                 model.model_name = model.model_name + "_%s" % dataset_name

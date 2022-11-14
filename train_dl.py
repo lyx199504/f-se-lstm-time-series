@@ -22,9 +22,11 @@ if __name__ == "__main__":
     sub_seq_len = 30
     dataset_list = ['realTraffic', 'realKnownCause', 'realAWSCloudwatch', 'A1Benchmark']
 
-    # model_list = [DNN_T_1, DNN_F_1, DNN_T_2, DNN_F_2]
-    model_list = [CNN_T_1, CNN_F_1, CNN_T_2, CNN_F_2]
-    # model_list = [LSTM_T_1, LSTM_F_1, LSTM_T_2, LSTM_F_2]
+    model_list = [
+        DNN_T_1, DNN_F_1, DNN_T_2, DNN_F_2,
+        CNN_T_1, CNN_F_1, CNN_T_2, CNN_F_2,
+        LSTM_T_1, LSTM_F_1, LSTM_T_2, LSTM_F_2,
+    ]
 
     for model_clf in model_list:
         for dataset_name in dataset_list:
@@ -44,20 +46,19 @@ if __name__ == "__main__":
                 X = np.abs(nf.rfft(X))
 
             if model_clf in [DNN_T_2, CNN_T_2, LSTM_T_2]:
-                X_c_list = []
+                X_t_list = []
                 for i in range(seq_len - sub_seq_len + 1):
-                    X_c = X[:, i: i + sub_seq_len]
-                    X_c_list.append(X_c[:, np.newaxis])
-                X = np.concatenate(X_c_list, axis=1)
+                    X_t = X[:, i: i + sub_seq_len]
+                    X_t_list.append(X_t)
+                X = np.stack(X_t_list, axis=1)
 
             if model_clf in [DNN_F_2, CNN_F_2, LSTM_F_2]:
                 # 子序列频率
-                X_c_list = []
+                X_f_list = []
                 for i in range(seq_len - sub_seq_len + 1):
-                    X_c = nf.rfft(X[:, i: i + sub_seq_len])
-                    X_map = np.abs(X_c)
-                    X_c_list.append(X_map[:, np.newaxis])
-                X = np.concatenate(X_c_list, axis=1)
+                    X_f = np.abs(nf.rfft(X[:, i: i + sub_seq_len]))
+                    X_f_list.append(X_f)
+                X = np.stack(X_f_list, axis=1)
 
             model = model_clf(learning_rate=0.001, batch_size=512, epochs=500, random_state=1, seq_len=seq_len, sub_seq_len=sub_seq_len)
             model.model_name = model.model_name + "_%s" % dataset_name
