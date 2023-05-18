@@ -25,7 +25,7 @@ def pytorch_set_seed(seed):
         torch.manual_seed(seed)  # cpu
         torch.cuda.manual_seed(seed)  # gpu
         torch.cuda.manual_seed_all(seed)  # 并行gpu
-        torch.backends.cudnn.deterministic = True  # cpu/gpu结果一致
+        # torch.backends.cudnn.deterministic = True  # cpu/gpu结果一致（会导致gpu变得特别慢）
 
 # pytorch深度学习模型
 class PytorchModel(nn.Module, BaseEstimator):

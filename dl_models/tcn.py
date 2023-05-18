@@ -65,7 +65,7 @@ class TCN(AD):
     def create_model(self):
         self.tcn = TemporalConvNet(num_inputs=1, num_channels=[8, 16, 32], kernel_size=3)
         self.dnn = nn.Sequential(
-            nn.Linear(in_features=60*32, out_features=32),
+            nn.Linear(in_features=self.seq_len*32, out_features=32),
             nn.Tanh(),
             nn.Linear(in_features=32, out_features=self.label_num),
         )
