@@ -63,7 +63,7 @@ Finally, execute train\_\*.py to train the model.
 The author and affiliation of this project:
 
     项目名称（Project Name）：f-se-lstm-time-series
-    项目作者（Author）：Yixiang Lu
+    项目作者（Author）：Yixiang Lu, Ziquan Huang, Mingjin He, Rui Guo
     作者单位（Affiliation）：暨南大学网络空间安全学院（College of Cyber Security, Jinan University）
 
 本实验代码基于param-opt训练工具，原项目作者及出处如下：<br>
