@@ -1,6 +1,6 @@
 # f-se-lstm-time-series
-本项目是论文《F-SE-LSTM: A Time Series Anomaly Detection Method Based on Frequency Domain Information》的实验代码，实现了多种时间序列异常检测模型，并构建一个异常检测方法。<br>
-This project is the experimental code of the paper "*F-SE-LSTM: A Time Series Anomaly Detection Method Based on Frequency Domain Information*", which implements a variety of time series anomaly detection models and create an anomaly detection method.
+本项目是论文《[F-SE-LSTM: A Time Series Anomaly Detection Method with Frequency Domain Information](https://doi.org/10.48550/arXiv.2412.02474)》的实验代码，实现了多种时间序列异常检测模型，并构建一个异常检测方法。<br>
+This project is the experimental code of the paper "*[F-SE-LSTM: A Time Series Anomaly Detection Method with Frequency Domain Information](https://doi.org/10.48550/arXiv.2412.02474)*", which implements a variety of time series anomaly detection models and create an anomaly detection method.
 
 ## 目录 Table of Contents
 
@@ -74,5 +74,10 @@ The experimental code is based on the param-opt training tool. The author and so
 若要引用本论文，可按照如下latex引用格式：<br>
 If you want to cite this paper, you could use the following latex citation format:
 
-    To be determined...
+    @article{lu2024fselstm,
+        title={F-SE-LSTM: A Time Series Anomaly Detection Method with Frequency Domain Information},
+        author={Lu, Yi-Xiang and Jin, Xiao-Bo and Chen, Jian and Liu, Dong-Jie and Geng, Guang-Gang},
+        journal={arXiv preprint arXiv:2412.02474},
+        year={2024}
+    }
 
